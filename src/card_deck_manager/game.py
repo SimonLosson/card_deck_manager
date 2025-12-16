@@ -1,0 +1,1 @@
+#todo : players list, cards the dealer will get at the beginning, stack which not to players nor to dealer, like draw piles

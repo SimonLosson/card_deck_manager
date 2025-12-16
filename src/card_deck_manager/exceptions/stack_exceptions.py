@@ -3,3 +3,7 @@ class PositionError(Exception):
 
 class NoSuchCardError(Exception):
     """Error if chosen index isn't in the card stack range"""
+
+class NotAStackError(Exception):
+    """Error if object isn't a stack"""
+

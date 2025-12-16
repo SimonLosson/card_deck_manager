@@ -1,0 +1,1 @@
+#todo : Dealer has list of stacks, and he initiate by giving cards to the player's hands

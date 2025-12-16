@@ -11,16 +11,20 @@ RANDOM = "RANDOM"
 class Stack:
     """Represents a card stack"""
 
-    def __init__(self, cards: list[Card]) -> None:
+    def __init__(self, name: str, cards: list[Card] = None) -> None:
+        self.name = name
+        if cards is None:
+            cards = []
         self.cards = cards
 
     def __repr__(self) -> str:
         """Representation of the stack object"""
-        return f"| Stack : {self.cards} |"
+        return f"| {self.name} : {self.cards} |"
 
     def shuffle(self) -> None:
         """Shuffle the stack cards"""
         shuffle(self.cards)
+        print("Cards have been shuffled")
 
     def add_card(self, new_card: Card, position: str = TOP, index: int | None = None) -> None:
         """
