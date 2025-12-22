@@ -1,0 +1,14 @@
+name: Linter workflow
+run-name: Linting source files
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: Run ruff checks
+        run: ruff check .

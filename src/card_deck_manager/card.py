@@ -1,8 +1,10 @@
 """Card module"""
 from card_deck_manager.suit import Suit
 
+
 class Card:
     """Represents a card"""
+
     def __init__(self, value:str, suit:Suit) -> None:
         self.value = value
         self.suit = suit

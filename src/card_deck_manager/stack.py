@@ -1,8 +1,10 @@
 """Stack module"""
 from __future__ import annotations
+
+from random import randint, shuffle
+
 from card_deck_manager.card import Card
-from random import shuffle, randint
-from card_deck_manager.exceptions.stack_exceptions import PositionError, NoSuchCardError
+from card_deck_manager.exceptions.stack_exceptions import NoSuchCardError, PositionError
 
 TOP = "TOP"
 BOTTOM = "BOTTOM"
@@ -23,8 +25,7 @@ class Stack:
         return f"| {self.name} : {self.cards} |"
 
     def __add__(self, other: Stack) -> Stack:
-        """
-        Merge two stacks in place in memory
+        """Merge two stacks in place in memory
         Empty the cards list of the other Stack
         The result is also returned
         """
@@ -38,8 +39,7 @@ class Stack:
         print("Cards have been shuffled")
 
     def add_card(self, new_card: Card, position: str = TOP, index: int | None = None) -> None:
-        """
-        Add a card to the stack.
+        """Add a card to the stack.
 
         If index is defined, position will be ignored.
         """
@@ -58,8 +58,7 @@ class Stack:
                     raise PositionError
 
     def pick_card(self, position: str = TOP, index: int | None = None) -> Card:
-        """
-        Pick one card
+        """Pick one card
 
         If index is defined, position will be ignored
         """

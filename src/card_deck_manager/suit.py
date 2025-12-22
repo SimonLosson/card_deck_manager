@@ -1,5 +1,4 @@
 """Suit module"""
-from os import CLD_EXITED
 
 from card_deck_manager.python_tools.singleton import Singleton
 
@@ -12,6 +11,7 @@ SUIT_MAP = {
 
 class Suit:
     """Defines a suit"""
+
     def __init__(self, suit:str) -> None:
         self.suit = suit
 
@@ -20,16 +20,19 @@ class Suit:
 
 class Heart(Suit, metaclass=Singleton):
     """Singleton for heart suit"""
+
     def __init__(self):
         super().__init__(suit="heart")
 
 class Diamond(Suit, metaclass=Singleton):
     """Singleton for diamond suit"""
+
     def __init__(self):
         super().__init__(suit="diamond")
 
 class Club(Suit, metaclass=Singleton):
     """Singleton for club suit"""
+
     def __init__(self):
         super().__init__(suit="club")
 

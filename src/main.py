@@ -1,17 +1,16 @@
-from card_deck_manager.card import Card
-from card_deck_manager.player import Player
-from card_deck_manager.stack import Stack, TOP, BOTTOM, RANDOM
+"""Main module."""
+# ruff: noqa: ERA001
+
 from card_deck_manager import (
-    H,
-    D,
-    S,
     C,
-    classic_52_cards_deck_creation,
-    classic_32_cards_deck_creation,
+    D,
+    H,
+    S,
 )
-from card_deck_manager.game import Game, ConcreteGame
-from card_deck_manager.deck_creation import classic_52_cards_deck_creation, classic_32_cards_deck_creation
-from card_deck_manager.dealer import Dealer
+from card_deck_manager.card import Card
+from card_deck_manager.game import ConcreteGame
+from card_deck_manager.player import Player
+from card_deck_manager.stack import Stack
 
 c1 = Card(value="Q", suit=H)
 c2 = Card(value="J", suit=D)

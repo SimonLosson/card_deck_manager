@@ -1,10 +1,11 @@
-#todo : dealer initiates by giving cards to the player's hands
+#TODO : dealer initiates by giving cards to the player's hands
 """Dealer module"""
 from card_deck_manager.stack import Stack
 
 
 class Dealer:
     """Represents a dealer"""
+
     def __init__(self, decks: list[Stack]) -> None:
         self.decks = decks
 
