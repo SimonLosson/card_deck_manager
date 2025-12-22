@@ -1,4 +1,5 @@
 """Stack module"""
+from __future__ import annotations
 from card_deck_manager.card import Card
 from random import shuffle, randint
 from card_deck_manager.exceptions.stack_exceptions import PositionError, NoSuchCardError
@@ -12,14 +13,24 @@ class Stack:
     """Represents a card stack"""
 
     def __init__(self, name: str, cards: list[Card] = None) -> None:
-        self.name = name
         if cards is None:
             cards = []
+        self.name = name
         self.cards = cards
 
     def __repr__(self) -> str:
         """Representation of the stack object"""
         return f"| {self.name} : {self.cards} |"
+
+    def __add__(self, other: Stack) -> Stack:
+        """
+        Merge two stacks in place in memory
+        Empty the cards list of the other Stack
+        The result is also returned
+        """
+        self.cards += other.cards
+        other.cards = []
+        return self
 
     def shuffle(self) -> None:
         """Shuffle the stack cards"""
