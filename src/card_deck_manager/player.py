@@ -19,7 +19,8 @@ class Player:
         return f"The player's name is {self.name}"
 
     def draw_card(self, target_stack: Stack, n: int = 1, add_position: str = TOP) -> None:
-        """Draw n cards in a selected stack
+        """
+        Draw n cards in a selected stack
 
         target_stack(Stack): stack in which the player draws
         n(int): number of cards to draw

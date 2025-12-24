@@ -14,4 +14,6 @@ ignore = [
     "TC001",  # Temp ignore
     "ANN00",  # Temp ignore
     "D102",  # Temp ignore
+    "D203",  # Incorrect blank line before class
+    "D212",  # Multi line summary second line
 ]

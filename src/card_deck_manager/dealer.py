@@ -1,7 +1,6 @@
-#TODO : dealer initiates by giving cards to the player's hands
 """Dealer module"""
 from card_deck_manager.player import Player
-from card_deck_manager.stack import Stack, TOP
+from card_deck_manager.stack import TOP, Stack
 
 
 class Dealer:
@@ -18,7 +17,7 @@ class Dealer:
         return self.decks[0]
 
     @staticmethod
-    def give_card(
+    def give_card(  # noqa: PLR0913
             deck: Stack,
             player: Player,
             origin_position: str = TOP,
