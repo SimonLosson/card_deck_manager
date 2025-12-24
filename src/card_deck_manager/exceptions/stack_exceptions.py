@@ -1,3 +1,5 @@
+"""Stack exceptions."""
+
 class PositionError(Exception):
     """Error for illegal position of a card in a deck"""
 

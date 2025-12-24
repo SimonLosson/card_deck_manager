@@ -36,7 +36,7 @@ class ConcreteGame(Game):
     def __init__(self, players: list[Player], initial_decks_cards: list[list[Card]] | None = None) -> None:
         super().__init__(players=players, initial_decks_cards=initial_decks_cards)
 
-    def run(self):
+    def run(self) -> None:
         print("Game is running !")
 
 

@@ -14,7 +14,7 @@ RANDOM = "RANDOM"
 class Stack:
     """Represents a card stack"""
 
-    def __init__(self, name: str, cards: list[Card] = None) -> None:
+    def __init__(self, name: str, cards: list[Card] | None = None) -> None:
         if cards is None:
             cards = []
         self.name = name
@@ -25,7 +25,8 @@ class Stack:
         return f"| {self.name} : {self.cards} |"
 
     def __add__(self, other: Stack) -> Stack:
-        """Merge two stacks in place in memory
+        """Merge two stacks in place in memory.
+
         Empty the cards list of the other Stack
         The result is also returned
         """
@@ -75,8 +76,8 @@ class Stack:
                     return self.cards.pop(rdm)
                 case _:
                     raise PositionError
-        except IndexError:
-            raise NoSuchCardError()
+        except IndexError as e:
+            raise NoSuchCardError from e
 
     def chose_card(self) -> Card:
         """Show the card stack with cards positions and chose one card with its position"""
@@ -85,8 +86,8 @@ class Stack:
         pos = int(input("Chose a card by its position : "))
         try:
             chosen_card = self.cards.pop(pos)
-        except IndexError:
-            raise NoSuchCardError()
+        except IndexError as e:
+            raise NoSuchCardError from e
         print(f"Chosen card : {chosen_card}")
         return chosen_card
 

@@ -25,18 +25,18 @@ class Player:
         n(int): number of cards to draw
         add_position(str): position to place the card in the player's stack
         """
-        for i in range(n):
+        for _ in range(n):
             try:
                 card = target_stack.pick_card()
-            except AttributeError:
-                raise NotAStackError
+            except AttributeError as e:
+                raise NotAStackError from e
             self.hand.add_card(new_card=card, position=add_position)
 
     def play_card(self, target_stack: Stack, n: int = 1, play_position: str = TOP) -> None:
         """Play n cards from the player's hand to the target_stack"""
         if not isinstance(target_stack, Stack):
             raise NotAStackError
-        for i in range(n):
+        for _ in range(n):
             card = self.hand.chose_card()
             target_stack.add_card(new_card=card, position=play_position)
 
