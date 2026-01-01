@@ -1,11 +1,12 @@
-"""Card module"""
+"""Card module."""
 from card_deck_manager.suit import Suit
 
 
 class Card:
-    """Represents a card"""
+    """Represents a card."""
 
     def __init__(self, value:str, suit:Suit) -> None:
+        """Init Card object."""
         self.value = value
         self.suit = suit
         self.is_head = None

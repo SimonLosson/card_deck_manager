@@ -1,16 +1,16 @@
-"""Dealer module"""
+"""Dealer module."""
 from card_deck_manager.player import Player
 from card_deck_manager.stack import TOP, Stack
 
-
 class Dealer:
-    """Represents a dealer"""
+    """Represents a dealer."""
 
     def __init__(self, decks: list[Stack]) -> None:
+        """Init Dealer object."""
         self.decks = decks
 
     def merge_all_decks(self) -> Stack:
-        """Takes all decks and merge them to return a single deck"""
+        """Takes all decks and merge them to return a single deck."""
         for deck in self.decks[1:]:
             self.decks[0] += deck
         self.decks = [self.decks[0]]

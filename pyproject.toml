@@ -6,14 +6,7 @@ target-version = "py312"
 select = ["ALL"]
 ignore = [
     "T20",  # Print
-    "D107",  # Temp ignore
-    "ANN204",  # Temp ignore
-    "D4",  # Temp ignore
-    "D105",  # Temp ignore
-    "S311",  # Temp ignore
-    "TC001",  # Temp ignore
-    "ANN00",  # Temp ignore
-    "D102",  # Temp ignore
+    "TC001",  # Move into type checking block
     "D203",  # Incorrect blank line before class
     "D212",  # Multi line summary second line
 ]

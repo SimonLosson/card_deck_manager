@@ -1,4 +1,4 @@
-"""Game module"""
+"""Game module."""
 import abc
 
 from card_deck_manager import classic_52_cards_deck_creation
@@ -9,9 +9,10 @@ from card_deck_manager.stack import Stack
 
 
 class Game(metaclass=abc.ABCMeta):
-    """Represents an abstract game"""
+    """Represents an abstract game."""
 
     def __init__(self, players: list[Player], initial_decks_cards: list[list[Card]] | None = None) -> None:
+        """Init abstract class Game."""
         if initial_decks_cards is None:
             initial_decks_cards: list[list[Card]] = [classic_52_cards_deck_creation()]
         self.players = players
@@ -31,9 +32,10 @@ class Game(metaclass=abc.ABCMeta):
         return
 
 class ConcreteGame(Game):
-    """Represents a concrete game"""
+    """Represents a concrete game."""
 
     def __init__(self, players: list[Player], initial_decks_cards: list[list[Card]] | None = None) -> None:
+        """Init ConcreteGame object."""
         super().__init__(players=players, initial_decks_cards=initial_decks_cards)
 
     def run(self) -> None:
