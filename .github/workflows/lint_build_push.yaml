@@ -16,9 +16,12 @@ jobs:
         run: ruff check .
   Build-and-push:
     runs-on: ubuntu-latest
+    needs : Lint
     steps:
       - name: Check out repository code
         uses: actions/checkout@v5
+      - name: Install required packages
+        run: pip install -r requirements.txt
       - name: Build package
         run: python -m build
       - run: echo "Future package push step."
