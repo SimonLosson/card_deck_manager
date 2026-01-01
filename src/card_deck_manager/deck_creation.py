@@ -8,7 +8,7 @@ CLASSIC_CARDS_SUITS = [H, D, C, S]
 
 
 def classic_52_cards_deck_creation() -> list[Card]:
-    """Creates a classic 52 card deck."""
+    """Create a classic 52 card deck."""
     return [
         Card(value=value, suit=suit)
         for suit in CLASSIC_CARDS_SUITS
@@ -17,7 +17,7 @@ def classic_52_cards_deck_creation() -> list[Card]:
 
 
 def classic_32_cards_deck_creation() -> list[Card]:
-    """Creates a classic 52 card deck."""
+    """Create a classic 52 card deck."""
     return [
         Card(value=value, suit=suit)
         for suit in CLASSIC_CARDS_SUITS

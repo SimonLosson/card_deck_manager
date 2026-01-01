@@ -13,6 +13,7 @@ class Card:
         self.numeric_value = self._init_numeric_value()
 
     def __repr__(self) -> str:
+        """Show value and suit of a card."""
         return f"< {self.value}{self.suit} >"
 
     def _init_numeric_value(self) -> int:
