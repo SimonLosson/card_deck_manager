@@ -1,6 +1,6 @@
 """Module which contains functions to create card decks."""
-from card_deck_manager.suit import C, D, H, S
 from card_deck_manager.card import Card
+from card_deck_manager.suit import C, D, H, S
 
 CLASSIC_CARDS_VALUES_52_CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 CLASSIC_CARDS_VALUES_32_CARDS = ["A", "7", "8", "9", "10", "J", "Q", "K"]
