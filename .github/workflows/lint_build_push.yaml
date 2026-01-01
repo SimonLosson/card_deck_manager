@@ -1,5 +1,5 @@
-name: Linter workflow
-run-name: Linting source files
+name: Lint, build and push workflow
+run-name: Linting source files, building and pushing package
 on:
   push:
   workflow_dispatch:
@@ -14,3 +14,12 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run ruff checks
         run: ruff check .
+  Build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - name: Build package
+        run: python -m build
+      - run: echo "Future package push step."
+
