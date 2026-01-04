@@ -94,7 +94,3 @@ class Stack:
             raise NoSuchCardError from e
         print(f"Chosen card : {chosen_card}")
         return chosen_card
-
-
-
-

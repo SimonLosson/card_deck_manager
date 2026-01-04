@@ -24,6 +24,3 @@ def classic_32_cards_deck_creation() -> list[Card]:
         for value in CLASSIC_CARDS_VALUES_32_CARDS
     ]
 
-
-
-

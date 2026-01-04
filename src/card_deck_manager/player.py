@@ -41,9 +41,3 @@ class Player:
         for _ in range(n):
             card = self.hand.chose_card()
             target_stack.add_card(new_card=card, position=play_position)
-
-
-
-
-
-

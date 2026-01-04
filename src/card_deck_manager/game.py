@@ -43,7 +43,3 @@ class ConcreteGame(Game):
     def run(self) -> None:
         """Keep the game running."""
         print("Game is running !")
-
-
-
-
