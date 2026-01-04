@@ -29,8 +29,3 @@ class Dealer:
         """Take one card from one deck and gives it to one player."""
         given_card = deck.pick_card(position=origin_position, index=origin_index)
         player.hand.add_card(new_card=given_card, position=destination_position, index=destination_index)
-
-
-
-
-
