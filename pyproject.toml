@@ -1,0 +1,21 @@
+[project]
+name = "card_deck_manager"
+version = "0.0.1"
+authors = [
+  { name="Losson Simon", email="simon.losson@student.junia.com" },
+]
+description = "A card deck manager which you can create games with."
+requires-python = ">=3.9"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "T20",  # Print
+    "TC001",  # Move into type checking block
+    "D203",  # Incorrect blank line before class
+    "D212",  # Multi line summary second line
+]

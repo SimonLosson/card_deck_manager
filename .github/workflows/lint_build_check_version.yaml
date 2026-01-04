@@ -1,0 +1,50 @@
+name: Lint, build and check version workflow
+run-name: Linting source files, building package and checking its version
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: Install required packages
+        run: pip install -r requirements.txt
+      - name: Run ruff checks
+        run: ruff check .
+  Build-and-check-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    needs : Lint
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - name: Install required packages
+        run: pip install -r requirements.txt
+      - name: Build package
+        run: python -m build --wheel
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: card-deck-manager-483313
+          workload_identity_provider: projects/715667379936/locations/global/workloadIdentityPools/github-workload-identity-pool/providers/github-provider
+          service_account: github-action@card-deck-manager-483313.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_lifetime: 900s
+      - name: Check that version does not already exists in GAR
+        run: |
+          filename=$(ls dist)
+          version="${filename#*-}"                 # remove package name
+          version="${version%-*"-"*"-"*".whl"}"   # remove last 3 dash fields + .whl
+          ! gcloud artifacts versions list \
+            --package=card-deck-manager \
+            --repository=mypythonreg \
+            --location=europe-west1 \
+            --project=card-deck-manager-483313 \
+            --format='value(name)' \
+            --filter='name:versions/'${VERSION} | grep -x ${version}
