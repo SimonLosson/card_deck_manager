@@ -2,6 +2,8 @@ name: Lint, build and check version workflow
 run-name: Linting source files, building package and checking its version
 on:
   push:
+    branches-ignore:
+      - main
   workflow_dispatch:
 jobs:
   Lint:
