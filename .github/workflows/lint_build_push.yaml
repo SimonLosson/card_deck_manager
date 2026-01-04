@@ -24,5 +24,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build package
         run: python -m build
-      - run: echo "Future package push step."
+      - name: Upload package to GAR
+        run: python -m twine upload --repository-url https://europe-west1-python.pkg.dev/card-deck-manager-483313/mypythonreg dist/card_deck_manager-0.0.1-py3-none-any.whl
 
