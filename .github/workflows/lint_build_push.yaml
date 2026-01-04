@@ -26,7 +26,7 @@ jobs:
       - name: Install required packages
         run: pip install -r requirements.txt
       - name: Build package
-        run: python -m build
+        run: python -m build --wheel
       - name: Authenticate to Google Cloud
         id: auth
         uses: google-github-actions/auth@v2
@@ -36,9 +36,25 @@ jobs:
           service_account: github-action@card-deck-manager-483313.iam.gserviceaccount.com
           token_format: access_token
           access_token_lifetime: 900s
-      - name: Upload package to GAR
-        env:
-          TWINE_USERNAME: oauth2accesstoken
-          TWINE_PASSWORD: ${{ steps.auth.outputs.access_token }}
-          TWINE_NON_INTERACTIVE: "1"
-        run: python -m twine upload --repository-url https://europe-west1-python.pkg.dev/card-deck-manager-483313/mypythonreg dist/card_deck_manager-0.0.1-py3-none-any.whl
+      - name: Check if version exists in the GAR
+        run: |
+          filename=$(ls dist)
+          version="${filename#*-}"                 # remove package name
+          version="${version%-*"-"*"-"*".whl"}"   # remove last 3 dash fields + .whl
+          gcloud artifacts versions list \
+            --package=card-deck-manager \
+            --repository=mypythonreg \
+            --location=europe-west1 \
+            --project=card-deck-manager-483313 \
+            --format='value(name)' \
+            --filter='name:versions/'${VERSION} | grep ${version}
+
+
+
+
+#      - name: Upload package to GAR
+#        env:
+#          TWINE_USERNAME: oauth2accesstoken
+#          TWINE_PASSWORD: ${{ steps.auth.outputs.access_token }}
+#          TWINE_NON_INTERACTIVE: "1"
+#        run: python -m twine upload --repository-url https://europe-west1-python.pkg.dev/card-deck-manager-483313/mypythonreg dist/card_deck_manager-0.0.1-py3-none-any.whl
