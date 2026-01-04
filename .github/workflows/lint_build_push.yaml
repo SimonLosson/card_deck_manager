@@ -41,13 +41,13 @@ jobs:
           filename=$(ls dist)
           version="${filename#*-}"                 # remove package name
           version="${version%-*"-"*"-"*".whl"}"   # remove last 3 dash fields + .whl
-          gcloud artifacts versions list \
+          ! gcloud artifacts versions list \
             --package=card-deck-manager \
             --repository=mypythonreg \
             --location=europe-west1 \
             --project=card-deck-manager-483313 \
             --format='value(name)' \
-            --filter='name:versions/'${VERSION} | grep ${version}
+            --filter='name:versions/'${VERSION} | grep -x ${version}
 
 
 
