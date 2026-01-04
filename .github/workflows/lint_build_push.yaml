@@ -24,6 +24,12 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build package
         run: python -m build
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: card-deck-manager-483313
+          workload_identity_provider: projects/715667379936/locations/global/workloadIdentityPools/github-workload-identity-pool/providers/github-provider
+          service_account: github-action@card-deck-manager-483313.iam.gserviceaccount.com
       - name: Upload package to GAR
         run: python -m twine upload --repository-url https://europe-west1-python.pkg.dev/card-deck-manager-483313/mypythonreg dist/card_deck_manager-0.0.1-py3-none-any.whl
 
