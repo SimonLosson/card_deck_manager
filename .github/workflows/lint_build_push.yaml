@@ -1,5 +1,5 @@
-name: Lint, build and push workflow
-run-name: Linting source files, building and pushing package
+name: Lint, build and check version workflow
+run-name: Linting source files, building package and checking its version
 on:
   push:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run ruff checks
         run: ruff check .
-  Build-and-push:
+  Build-and-check-version:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -36,7 +36,7 @@ jobs:
           service_account: github-action@card-deck-manager-483313.iam.gserviceaccount.com
           token_format: access_token
           access_token_lifetime: 900s
-      - name: Check if version exists in the GAR
+      - name: Check that version does not already exists in GAR
         run: |
           filename=$(ls dist)
           version="${filename#*-}"                 # remove package name
