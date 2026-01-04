@@ -1,0 +1,35 @@
+name: Build and push workflow
+run-name: Building and pushing package
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  Build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - name: Install required packages
+        run: pip install -r requirements.txt
+      - name: Build package
+        run: python -m build --wheel
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: card-deck-manager-483313
+          workload_identity_provider: projects/715667379936/locations/global/workloadIdentityPools/github-workload-identity-pool/providers/github-provider
+          service_account: github-action@card-deck-manager-483313.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_lifetime: 900s
+      - name: Upload package to GAR
+        env:
+          TWINE_USERNAME: oauth2accesstoken
+          TWINE_PASSWORD: ${{ steps.auth.outputs.access_token }}
+          TWINE_NON_INTERACTIVE: "1"
+        run: python -m twine upload --repository-url https://europe-west1-python.pkg.dev/card-deck-manager-483313/mypythonreg dist/*
