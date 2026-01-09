@@ -36,6 +36,10 @@ class Stack:
         other.cards = []
         return self
 
+    def __len__(self) -> int:
+        """Treats Stack length as a list."""
+        return len(self.cards)
+
     def shuffle(self) -> None:
         """Shuffle the stack cards."""
         shuffle(self.cards)
