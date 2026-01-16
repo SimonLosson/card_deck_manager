@@ -1,5 +1,4 @@
 """Dealer module."""
-from card_deck_manager.player import Player
 from card_deck_manager.stack import TOP, Stack
 
 
@@ -20,7 +19,7 @@ class Dealer:
     @staticmethod
     def give_card(  # noqa: PLR0913
             deck: Stack,
-            player: Player,
+            dest_stack: Stack,
             origin_position: str = TOP,
             origin_index: int | None = None,
             destination_position: str = TOP,
@@ -28,4 +27,4 @@ class Dealer:
     ) -> None:
         """Take one card from one deck and gives it to one player."""
         given_card = deck.pick_card(position=origin_position, index=origin_index)
-        player.hand.add_card(new_card=given_card, position=destination_position, index=destination_index)
+        dest_stack.add_card(new_card=given_card, position=destination_position, index=destination_index)
