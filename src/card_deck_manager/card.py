@@ -20,31 +20,31 @@ class Card:
 
     def __eq__(self, other: Card) -> bool:
         """Check if two cards values are equal."""
-        return self.value == other.value
+        return self.numeric_value == other.numeric_value
 
     def __hash__(self) -> int:
         """Return a hash based on the card value."""
-        return hash(self.value)
+        return hash(self.numeric_value)
 
     def __lt__(self, other: Card) -> bool:
         """Check if card value is lower than other card value."""
-        return self.value < other.value
+        return self.numeric_value < other.numeric_value
 
     def __gt__(self, other: Card) -> bool:
         """Check if card value is greater than other card value."""
-        return self.value > other.value
+        return self.numeric_value > other.numeric_value
 
     def __le__(self, other: Card) -> bool:
         """Check if card value is lower or equal than other card value."""
-        return self.value <= other.value
+        return self.numeric_value <= other.numeric_value
 
     def __ge__(self, other: Card) -> bool:
         """Check if card value is greater or equal than other card value."""
-        return self.value >= other.value
+        return self.numeric_value >= other.numeric_value
 
     def _init_numeric_value(self) -> int:
         value_to_numeric_map = {
-            "A": 1,
+            "A": 14,
             "2": 2,
             "3": 3,
             "4": 4,
