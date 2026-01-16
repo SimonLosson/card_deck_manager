@@ -65,6 +65,21 @@ class Stack:
                 case _:
                     raise PositionError
 
+    def add_cards(self, new_cards: list[Card], position: str = TOP, index: int | None = None) -> None:
+        """
+        Add cards to the stack.
+
+        If index is defined, position will be ignored
+        """
+        for new_card in new_cards:
+            self.add_card(new_card=new_card, position=position, index=index)
+
+    def empty(self) -> list[Card]:
+        """Return cards and empty stack."""
+        cards = self.cards.copy()
+        self.cards = []
+        return cards
+
     def pick_card(self, position: str = TOP, index: int | None = None) -> Card:
         """
         Pick one card.
