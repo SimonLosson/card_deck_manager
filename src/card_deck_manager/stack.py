@@ -43,7 +43,6 @@ class Stack:
     def shuffle(self) -> None:
         """Shuffle the stack cards."""
         shuffle(self.cards)
-        print("Cards have been shuffled")
 
     def add_card(self, new_card: Card, position: str = TOP, index: int | None = None) -> None:
         """
