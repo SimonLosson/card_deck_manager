@@ -5,3 +5,4 @@ ruff==0.14.10
 keyring==25.7.0
 keyrings.google-artifactregistry-auth==1.1.2
 twine==6.2.0
+pytest==9.0.2
