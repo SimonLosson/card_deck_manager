@@ -23,10 +23,5 @@ ignore = [
     "D212",  # Multi line summary second line
 ]
 
-# Source - https://stackoverflow.com/a
-# Posted by FlightPlan, modified by community. See post 'Timeline' for change history
-# Retrieved 2026-01-24, License - CC BY-SA 4.0
-
 [tool.ruff.lint.per-file-ignores]
 "integration_tests/*" = ["S101"]
-
