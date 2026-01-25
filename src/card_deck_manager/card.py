@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from card_deck_manager.suit import Suit
 
+MIN_HEAD_VALUE = 11
+MAX_HEAD_VALUE = 13
 
 class Card:
     """Represents a card."""
@@ -11,7 +13,6 @@ class Card:
         """Init Card object."""
         self.value = value
         self.suit = suit
-        self.is_head = None
         self.numeric_value = self._init_numeric_value()
 
     def __repr__(self) -> str:
@@ -43,6 +44,7 @@ class Card:
         return self.numeric_value >= other.numeric_value
 
     def _init_numeric_value(self) -> int:
+        """Give numeric value according to self.value."""
         value_to_numeric_map = {
             "A": 14,
             "2": 2,
@@ -59,3 +61,7 @@ class Card:
             "K": 13,
         }
         return value_to_numeric_map[self.value]
+
+    def is_head(self) -> bool:
+        """Return true if card is head."""
+        return MAX_HEAD_VALUE >= self.numeric_value >= MIN_HEAD_VALUE

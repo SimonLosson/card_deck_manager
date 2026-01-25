@@ -1,11 +1,14 @@
 [project]
 name = "card_deck_manager"
-version = "2.0.1"
+version = "2.1.0"
 authors = [
   { name="Losson Simon", email="simon.losson@student.junia.com" },
 ]
 description = "A card deck manager which you can create games with."
 requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 120
@@ -19,3 +22,6 @@ ignore = [
     "D203",  # Incorrect blank line before class
     "D212",  # Multi line summary second line
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"integration_tests/*" = ["S101"]

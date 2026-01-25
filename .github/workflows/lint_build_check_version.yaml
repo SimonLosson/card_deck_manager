@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
 jobs:
-  Lint:
+  Lint-Test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -14,6 +14,8 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Install required packages
         run: pip install -r requirements.txt
+      - name: Run integration tests
+        run: pytest integration_tests
       - name: Run ruff checks
         run: ruff check .
   Build-and-check-version:
@@ -21,7 +23,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    needs : Lint
+    needs : Lint-Test
     steps:
       - name: Check out repository code
         uses: actions/checkout@v5
