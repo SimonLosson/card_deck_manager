@@ -1,5 +1,6 @@
 """Game module."""
 import abc
+from collections.abc import Callable
 
 from card_deck_manager import classic_52_cards_deck_creation
 from card_deck_manager.card import Card
@@ -11,7 +12,12 @@ from card_deck_manager.stack import Stack
 class Game(metaclass=abc.ABCMeta):
     """Represents an abstract game."""
 
-    def __init__(self, players: list[Player], initial_decks_cards: list[list[Card]] | None = None) -> None:
+    def __init__(
+            self,
+            players: list[Player],
+            initial_decks_cards: list[list[Card]] | None = None,
+            dealer_callable:Callable = Dealer,
+    ) -> None:
         """Init abstract class Game."""
         if initial_decks_cards is None:
             initial_decks_cards: list[list[Card]] = [classic_52_cards_deck_creation()]
@@ -19,7 +25,7 @@ class Game(metaclass=abc.ABCMeta):
         self.initial_decks_cards = initial_decks_cards
         self.initial_decks = self.create_decks()
         self.piles: dict[str, Stack] = {}
-        self.dealer: Dealer = Dealer(decks=self.initial_decks)
+        self.dealer: Dealer = dealer_callable(decks=self.initial_decks)
 
     def create_decks(self) -> list[Stack]:
         """Create a deck of cards."""
