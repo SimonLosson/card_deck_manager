@@ -1,6 +1,11 @@
 """Card module."""
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
 from card_deck_manager.suit import Suit
 
 MIN_HEAD_VALUE = 11
@@ -9,11 +14,11 @@ MAX_HEAD_VALUE = 13
 class Card:
     """Represents a card."""
 
-    def __init__(self, value:str, suit:Suit) -> None:
+    def __init__(self, value:str, suit:Suit, numeric_value_callable: Callable | None =None) -> None:
         """Init Card object."""
         self.value = value
         self.suit = suit
-        self.numeric_value = self._init_numeric_value()
+        self.numeric_value = self._init_numeric_value() if numeric_value_callable is None else numeric_value_callable()
 
     def __repr__(self) -> str:
         """Show value and suit of a card."""
