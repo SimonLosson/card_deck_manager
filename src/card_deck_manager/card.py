@@ -18,7 +18,8 @@ class Card:
         """Init Card object."""
         self.value = value
         self.suit = suit
-        self.numeric_value = self._init_numeric_value() if numeric_value_callable is None else numeric_value_callable()
+        self.numeric_value = self._init_numeric_value() if numeric_value_callable is None else (
+            numeric_value_callable(self.value))
 
     def __repr__(self) -> str:
         """Show value and suit of a card."""
